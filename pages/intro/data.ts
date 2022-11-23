@@ -41,6 +41,55 @@ const data: Record<string, SingleIntroData[]> = {
       ],
     },
   ],
+  dataFetching: [
+    {
+      title: "前情提要",
+      contentList: [
+        "useFetch 用在「直接呼叫網址」",
+        "useAsyncData 用在比較複雜的異步處理",
+        "帶有lazy標示的（或lazy為true），可以透過其中的pending做到loading效果",
+        "不想要SSR渲染怎麼做？ 用<ClientOnly>包起來",
+      ],
+    },
+    {
+      title: "資料流步驟解釋",
+      contentList: [
+        "CSR(Client Side Render)\n組件渲染（生成html） → 開始取得資料 → 資料取得完成 → 組件更新 → 最終畫面呈現",
+        "SSR(Server Side Render)\n開始取得資料 → 資料取得完成 → 組件渲染（生成html）→ 最終畫面呈現",
+      ],
+    },
+    {
+      title: "基本使用 — useFetch",
+      contentList: [
+        "透過單純的API url取得資料",
+        "在組件生成的一開始就執行fetch",
+        "常用的options，幾乎與原生fetch的選項一樣",
+      ],
+    },
+    {
+      title: "靈活使用 — useAsyncData",
+      contentList: [
+        "Nuxt3中「最常用」的取得資料方式",
+        "在useAsyncData中，可以取得nuxtApp的context",
+      ],
+    },
+    {
+      title: "nuxt適用 — $fetch",
+      contentList: [
+        "在呼叫$fetch時，會「暫停」現有的組件渲染，做到Server Side Render",
+        "在客戶端之中，則使用原生的fetch就行",
+      ],
+    },
+    {
+      title: "技術總結",
+      contentList: [
+        "useFetch：透過單純的API url取得資料",
+        "useAsyncData：最常用的SSR composable",
+        "$fetch：會「暫停」渲染的fetch",
+        "ClientOnly：包起來的組件變成CSR",
+      ],
+    },
+  ],
 };
 
 export default data;
