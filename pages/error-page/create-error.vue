@@ -28,7 +28,7 @@ export default defineComponent({
   name: "ErrorPageSample",
   setup(props) {
     useHead({
-      title: "Error Page Sample | 錯誤頁示範",
+      title: "CreateError Page Sample | 錯誤頁示範",
     });
 
     const countDownSecs = ref(ERROR_INTERVAL_TIME_SECONDS);

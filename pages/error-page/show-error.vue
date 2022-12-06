@@ -28,7 +28,7 @@ export default defineComponent({
   name: "ErrorPageSample",
   setup(props) {
     useHead({
-      title: "Error Page Sample | 錯誤頁示範",
+      title: "ShowError Page Sample | 錯誤頁示範",
     });
 
     const countDownSecs = ref(ERROR_INTERVAL_TIME_SECONDS);
@@ -50,14 +50,10 @@ export default defineComponent({
         countDownSecs.value -= 1;
       }, 1000);
 
-      const t = setTimeout(() => {
+      setTimeout(() => {
         handleThrowError();
         // clearInterval(t);
       }, ERROR_INTERVAL_TIME_SECONDS * 1000);
-    });
-
-    onErrorCaptured((err) => {
-      window.alert(err.message);
     });
 
     return {
