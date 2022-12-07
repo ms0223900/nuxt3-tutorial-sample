@@ -90,6 +90,39 @@ const data: Record<string, SingleIntroData[]> = {
       ],
     },
   ],
+  seoMetaTag: [
+    {
+      title: "HTML的SEO標籤",
+      contentList: ["標題<title>", '描述: <meta name="description">'],
+    },
+    {
+      title: "Meta的og標籤",
+      contentList: [
+        "og全名為Open Graph（開放社交關係圖）",
+        "og:title和og:description的權重大於title和description",
+      ],
+    },
+    {
+      title: "Nuxt3中實作meta標籤",
+      contentList: [
+        "靜態設定: 設定在nuxt.config.ts中",
+        "動態設定: 使用useHead這個composable",
+      ],
+    },
+    {
+      title: "技術總結",
+      contentList: [
+        "網頁只需要基本資訊，設定title和description就好",
+        "如要「預覽卡片」，meta的name設定og:title, og:description和og:image",
+        "Nuxt3中要添加meta標籤，只要使用useHead這個composable",
+      ],
+    },
+
+    // {
+    //   title: "標題",
+    //   contentList: ["<title>標題填在這</title>"],
+    // },
+  ],
 };
 
 export default data;
