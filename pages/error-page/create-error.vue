@@ -13,7 +13,7 @@
     "
   >
     <h1 class="text-6xl font-bold text-green-500">
-      Error Page Sample | 錯誤頁示範
+      CreateError() Page Sample | 錯誤頁示範
     </h1>
     <h2>{{ `Throw Error in ${countDownSecs} seconds...` }}</h2>
   </div>
@@ -33,14 +33,14 @@ export default defineComponent({
 
     const countDownSecs = ref(ERROR_INTERVAL_TIME_SECONDS);
 
-    const handleThrowError = () => {
+    const handleCreateError = () => {
       throw createError({
-        fatal: true,
+        // fatal: true,
         statusCode: 500,
         message: "You got some trouble by `createError` function :(",
       });
     };
-    // handleThrowError();
+    // 如果在這邊createError，形同「server端」處理error，會渲染為error.vue的畫面
 
     onMounted(() => {
       const countDownTimer = setInterval(() => {
@@ -53,7 +53,8 @@ export default defineComponent({
 
       setTimeout(() => {
         try {
-          handleThrowError();
+          // 形同觸發throw new Error()
+          handleCreateError();
         } catch (error: any) {
           window.alert(error.message);
         }

@@ -13,7 +13,7 @@
     "
   >
     <h1 class="text-6xl font-bold text-green-500">
-      Error Page Sample | 錯誤頁示範
+      showError() Page Sample | 錯誤頁示範
     </h1>
     <h2>{{ `Throw Error in ${countDownSecs} seconds...` }}</h2>
   </div>
@@ -37,7 +37,7 @@ export default defineComponent({
       throw showError({
         fatal: true,
         statusCode: 500,
-        message: "You got some trouble :(",
+        message: "You got some trouble by `showError()` :(",
       });
     };
 
