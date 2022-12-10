@@ -117,11 +117,15 @@ const data: Record<string, SingleIntroData[]> = {
         "Nuxt3中要添加meta標籤，只要使用useHead這個composable",
       ],
     },
-
-    // {
-    //   title: "標題",
-    //   contentList: ["<title>標題填在這</title>"],
-    // },
+  ],
+  errorHandling: [
+    {
+      title: "技術總結",
+      contentList: [
+        "createError: 溫和地拋錯，可用在跳窗。",
+        "showError: 一律強硬拋錯，簡單暴力。",
+      ],
+    },
   ],
 };
 
