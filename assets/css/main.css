@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .main--wrapper {
+    @apply flex items-center justify-center flex-col h-[100vh] text-center;
+  }
+}
+
 @layer components {
   .nuxt-link-btn {
     @apply border-solid border-2 border-gray-600 p-2 bg-gray-50 hover:bg-gray-200 rounded-md;
