@@ -1,3 +1,5 @@
+import useCommonStore, { MakeInitStateFn } from "./useCommonStore";
+
 export interface SingleCommodity {
   name: string;
   price: number;
@@ -7,40 +9,40 @@ export interface CartStoreState {
   commodityWishList: SingleCommodity[];
 }
 
-type NewState =
-  | Partial<CartStoreState>
-  | ((state: CartStoreState) => Partial<CartStoreState>);
-
-const makeInitCartStoreState = (
-  state?: Partial<CartStoreState>
+const makeInitCartStoreState: MakeInitStateFn<CartStoreState> = (
+  state
 ): CartStoreState => ({
   commodityWishList: [],
   ...state,
 });
 
 const useCartStore = definePiniaStore("cart", () => {
-  const state = ref(makeInitCartStoreState());
+  // 直接引用就好!
+  const { state, setState, resetState } = useCommonStore<CartStoreState>(
+    makeInitCartStoreState
+  );
 
-  const setState = (newState: NewState) => {
-    const _newState =
-      typeof newState === "function" ? newState(state.value) : newState;
-    state.value = {
-      ...state.value,
-      ..._newState,
-    };
-    console.log(state.value);
+  // add new item
+  const addNewCommodity = (newCommodity: SingleCommodity) => {
+    setState((s) => ({
+      commodityWishList: [...s.commodityWishList, newCommodity],
+    }));
   };
 
-  const resetState = (otherState?: Partial<CartStoreState>) => {
-    setState(makeInitCartStoreState(otherState));
-  };
-
-  const handleRemoveCommodityItem = (idx: number) => {
+  // remove old item
+  const removeCommodity = (commodityName: SingleCommodity["name"]) => {
     setState((s) => {
-      const newCommidityWishList = [...s.commodityWishList];
-      newCommidityWishList.splice(idx, 1);
+      const newWishList = [...s.commodityWishList];
+      const idx = newWishList.findIndex(
+        (commidity) => commidity.name === commodityName
+      );
+      if (idx === -1)
+        return {
+          commodityWishList: newWishList,
+        };
+      newWishList.splice(idx, 1);
       return {
-        commodityWishList: newCommidityWishList,
+        commodityWishList: newWishList,
       };
     });
   };
@@ -54,7 +56,8 @@ const useCartStore = definePiniaStore("cart", () => {
     whishListTotalPrice,
     setState,
     resetState,
-    handleRemoveCommodityItem,
+    addNewCommodity,
+    removeCommodity,
   };
 });
 
